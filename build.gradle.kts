@@ -4,6 +4,7 @@ val logback_version: String by project
 val exposed_version: String by project
 val postgres_version: String by project
 val hikaricp_version: String by project
+val kotlin_serialization: String by project
 
 plugins {
     kotlin("jvm") version "1.9.23"
@@ -38,9 +39,13 @@ dependencies {
     implementation("io.ktor:ktor-server-host-common-jvm")
     implementation("io.ktor:ktor-server-status-pages-jvm")
     implementation("io.ktor:ktor-server-call-logging-jvm")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlin_serialization")
     implementation("io.ktor:ktor-server-netty-jvm")
     implementation("com.zaxxer:HikariCP:$hikaricp_version")
     implementation("ch.qos.logback:logback-classic:$logback_version")
-    testImplementation("io.ktor:ktor-server-tests-jvm")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+    //testImplementation("io.ktor:ktor-server-tests-jvm")
+    //testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+
+    testImplementation("io.ktor:ktor-server-test-host:$ktor_version")
+    testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlin_version")
 }

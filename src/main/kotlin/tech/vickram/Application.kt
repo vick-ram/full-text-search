@@ -13,6 +13,6 @@ fun main() {
 fun Application.module() {
     DatabaseFactory.init()
     configureSerialization()
-    configureMonitoring()
     configureRouting()
+    configureMonitoring()
 }

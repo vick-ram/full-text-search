@@ -58,9 +58,10 @@ fun Route.userRoutes() {
 
     post<User, UserRequest> { _, userRequest ->
         try {
+            createUser(userRequest)
             call.respond(
                 HttpStatusCode.Created,
-                createUser(userRequest)
+                "User stored correctly"
             )
         } catch (e: Exception) {
             /* Exceptions here */
