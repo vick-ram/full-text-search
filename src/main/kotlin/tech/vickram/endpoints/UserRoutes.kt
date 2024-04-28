@@ -44,8 +44,14 @@ fun Route.userRoutes() {
             }
         } catch (e: Exception) {
             when (e) {
-                is IllegalArgumentException -> call.respond(HttpStatusCode.BadRequest, e.message.toString())
-                else -> call.respond(HttpStatusCode.InternalServerError, e.message.toString())
+                is IllegalArgumentException -> call.respond(
+                    HttpStatusCode.BadRequest,
+                    e.message.toString()
+                )
+                else -> call.respond(
+                    HttpStatusCode.InternalServerError,
+                    e.message.toString()
+                )
             }
         }
     }
@@ -64,7 +70,10 @@ fun Route.userRoutes() {
     put<User.Id, UserRequest> { param, userRequest ->
         try {
             updateUser(param.id, userRequest)
-            call.respond(HttpStatusCode.Accepted, "user updated successfully")
+            call.respond(
+                HttpStatusCode.Accepted,
+                "user updated successfully"
+            )
         } catch (e: Exception) {
             /*Nothing much, just catching exceptions*/
         }
